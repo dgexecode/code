@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Vagas</title>
+    
+    <!-- Link para a fonte Montserrat do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let vagas = 27;
+
+        // Função para reduzir as vagas de maneira aleatória
+        function reduzirVagas() {
+            if (vagas > 3) {
+                vagas -= Math.floor(Math.random() * 3) + 1;  // Reduz de 1 a 3 vagas
+                if (vagas < 3) vagas = 3;  // Impede que o número de vagas caia abaixo de 3
+                // Atualiza o contador de vagas
+                document.getElementById("vagas-1").textContent = vagas;
+            }
+        }
+
+        // Inicia o contador assim que o conteúdo da página for carregado
+        let intervalo = setInterval(reduzirVagas, Math.random() * 4000 + 1500);  // Intervalo entre 1,5 e 4 segundos
+
+        // Limita a contagem a 90 segundos
+        setTimeout(() => clearInterval(intervalo), 90000);
+    });
+    </script>
+</head>
+<body style="font-family: 'Montserrat', sans-serif;">
+
+    <div id="contador-vagas-1" style="margin-top: 5px; font-weight: normal; font-size: 0.8rem; text-align: center; position: relative; z-index: 1;">
+        <p>Vagas Disponíveis: <span id="vagas-1" style="color: red; font-weight: normal;">27</span> Vagas</p>
+    </div>
+    
+</body>
+</html>
